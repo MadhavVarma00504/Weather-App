@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Weather App</title>
+    <!-- Bootstrap for styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            padding-top: 50px;
+        }
+        .weather-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+        #loadingSpinner {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function showLoading() {
+            document.getElementById('loadingSpinner').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+
+<div class="container weather-container">
+    <h1 class="text-center">Real-time Weather App</h1>
+    
+    <form method="POST" action="/weather" onsubmit="showLoading()">
+        <div class="form-group">
+            <input type="text" name="city" class="form-control" placeholder="Enter city name" required>
+        </div>
+        <button type="submit" class="btn btn-success btn-block">Get Weather</button>
+    </form>
+
+    <!-- Error Message Display -->
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="text-center">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <p>Fetching weather data...</p>
+    </div>
+</div>
+
+</body>
+</html>

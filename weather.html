@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather for {{ weather.city }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            padding-top: 50px;
+        }
+        .weather-info {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .weather-icon {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        .back-link {
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="weather-info">
+        <h2>Weather in {{ weather.city }}</h2>
+        <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" class="weather-icon" alt="Weather Icon">
+        <p><strong>Temperature:</strong> {{ weather.temperature }}°C</p>
+        <p><strong>Description:</strong> {{ weather.description }}</p>
+        <p><strong>Humidity:</strong> {{ weather.humidity }}%</p>
+        <p><strong>Wind Speed:</strong> {{ weather.wind_speed }} m/s</p>
+        
+        <!-- Display the future temperature prediction -->
+        <p><strong>Predicted Temperature (Next Hour):</strong> {{ future_temp }}°C</p>
+
+        <a href="/" class="btn btn-primary back-link">Check Another City</a>
+    </div>
+</div>
+
+</body>
+</html>
